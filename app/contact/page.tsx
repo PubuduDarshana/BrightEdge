@@ -24,7 +24,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { toast } from '@/components/ui/toaster';
+import { useToast } from '@/hooks/use-toast';
 
 const formSchema = z.object({
   fullName: z.string().min(2, { message: "Full name is required" }),
@@ -37,6 +37,7 @@ const formSchema = z.object({
 
 export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -71,7 +72,7 @@ export default function ContactPage() {
       <section className="pt-32 pb-20 bg-lightgray">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Let's Work Together</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Let&apos;s Work Together</h1>
             <p className="text-xl text-muted-foreground">
               Contact us today to discuss how we can help transform your digital presence
             </p>
